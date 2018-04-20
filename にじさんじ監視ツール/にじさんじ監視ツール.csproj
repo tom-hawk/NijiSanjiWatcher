@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Channel.cs" />
     <Compile Include="DynamicJson.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -66,6 +67,12 @@
     </Compile>
     <Compile Include="Start.Designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Url_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Url_Form.Designer.cs">
+      <DependentUpon>Url_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Whitelist.cs">
       <SubType>Form</SubType>
@@ -90,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Url_Form.resx">
+      <DependentUpon>Url_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Whitelist.resx">
       <DependentUpon>Whitelist.cs</DependentUpon>

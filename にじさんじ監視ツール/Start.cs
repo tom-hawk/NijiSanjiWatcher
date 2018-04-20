@@ -24,6 +24,7 @@ namespace にじさんじ監視ツール
             string lpFileName);
 
         Form1 form1 = null;
+        Url_Form url_form = null;
         Whitelist_Form whitelist_form = null;
         Setting setting = null;
 
@@ -296,6 +297,11 @@ namespace にじさんじ監視ツール
             #endregion
             mainMenu.Items.Add(commentViewerMenuItem);
 
+            ToolStripMenuItem urlMenuItem = new ToolStripMenuItem();
+            urlMenuItem.Text = "URLからコメビュを開く";
+            urlMenuItem.Click += new EventHandler(OpenCommentViewerFromUrl);
+            mainMenu.Items.Add(urlMenuItem);
+
             ToolStripMenuItem whitelistMenuItem = new ToolStripMenuItem();
             whitelistMenuItem.Text = "Whitelistの編集";
             whitelistMenuItem.Click += new EventHandler(Open_Whitelist);
@@ -314,6 +320,8 @@ namespace にじさんじ監視ツール
             notifyIcon1.ContextMenuStrip = mainMenu;
         }
 
+        
+
         private void OpenLiveManually(object sender, EventArgs e)
         {
             CheckOnAir(channel_list[((ToolStripMenuItem)sender).Text], "Live");
@@ -322,6 +330,13 @@ namespace にじさんじ監視ツール
         private void OpenCommentViewerManually(object sender, EventArgs e)
         {
             CheckOnAir(channel_list[((ToolStripMenuItem)sender).Text], "CommentViewer");
+        }
+
+        private void OpenCommentViewerFromUrl(object sender, EventArgs e)
+        {
+            url_form = new Url_Form();
+            AddOwnedForm(url_form);
+            url_form.Show();
         }
 
         private void Open_Whitelist(object sender, EventArgs e)

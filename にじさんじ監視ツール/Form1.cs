@@ -21,7 +21,6 @@ namespace にじさんじ監視ツール
         string video_title = null;
         string channel_id = null;
         string channel_title = null;
-        string api_key = "AIzaSyBbdediKFpbc6KcBKxMdrK-Gq-JL_Duz1s";
         string live_chat_id = null;
 
         bool show_owners_message = true;
@@ -53,7 +52,7 @@ namespace にじさんじ監視ツール
 
 
 
-            var live_chat_id_request = WebRequest.Create("https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=" + video_id + "&key=" + api_key);
+            var live_chat_id_request = WebRequest.Create("https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=" + video_id + "&key=" + Start.Api_key);
 
             try
             {
@@ -89,7 +88,7 @@ namespace にじさんじ監視ツール
         private void get_Comment(object sender, EventArgs e)
         {
             {
-                var messages_request = WebRequest.Create("https://www.googleapis.com/youtube/v3/liveChat/messages?part=snippet,authorDetails&liveChatId=" + live_chat_id + "&key=" + api_key);
+                var messages_request = WebRequest.Create("https://www.googleapis.com/youtube/v3/liveChat/messages?part=snippet,authorDetails&liveChatId=" + live_chat_id + "&key=" + Start.Api_key);
 
                 messages_object = null;
 
@@ -147,7 +146,14 @@ namespace にじさんじ監視ツール
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Start.Channel_is_onair[channel_id] = false;
+            try
+            {
+                Start.Channel_is_onair[channel_id] = false;
+            }
+            catch
+            {
+
+            }
         }
 
         private void URL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
